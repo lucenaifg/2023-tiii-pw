@@ -3,8 +3,9 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <groupId>br.edu.ifg.luziania</groupId>
-  <artifactId>pw2023</artifactId>
+  <artifactId>tiii-pw</artifactId>
   <version>1.0.0-SNAPSHOT</version>
+  <name>TIII PW</name>
   <properties>
     <compiler-plugin.version>3.10.1</compiler-plugin.version>
     <maven.compiler.release>17</maven.compiler.release>
@@ -39,6 +40,10 @@
     <dependency>
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-resteasy-qute</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-resteasy-jsonb</artifactId>
     </dependency>
     <dependency>
       <groupId>io.quarkus</groupId>
