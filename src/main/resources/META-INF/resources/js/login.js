@@ -13,7 +13,12 @@ function autenticar(){
                 throw new Error("Ocorreu algum erro no servidor!");
             }
         })
-        .then(json => console.log(JSON.stringify(json)));
+        .then(json => {
+            console.log(JSON.stringify(json));
+            alert(json.mensagem);
+            if (json.mensagem == 'Usuário autenticado!')
+                window.location.href = window.location.origin+'/principal';
+        });
     } else
         alert('Os campos e-mail e senha são obrigatórios! Verifique o formulário.')
 }
