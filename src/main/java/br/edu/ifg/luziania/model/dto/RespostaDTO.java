@@ -1,10 +1,18 @@
 package br.edu.ifg.luziania.model.dto;
 
-public class RetornoAutenticacaoDTO {
+public class RespostaDTO {
 
+    private Integer status;
     private String mensagem;
     private String url;
-    private Boolean autenticado;
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
 
     public String getMensagem() {
         return mensagem;
@@ -20,13 +28,5 @@ public class RetornoAutenticacaoDTO {
 
     public void setUrl(String url) {
         this.url = url;
-    }
-
-    public Boolean getAutenticado() {
-        return autenticado;
-    }
-
-    public void setAutenticado(Boolean autenticado) {
-        this.autenticado = autenticado;
     }
 }

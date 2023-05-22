@@ -1,10 +1,12 @@
 package br.edu.ifg.luziania.controller;
 
+import br.edu.ifg.luziania.model.bo.UsuarioBO;
 import br.edu.ifg.luziania.model.dto.AutenticacaoDTO;
 import br.edu.ifg.luziania.model.dto.RetornoAutenticacaoDTO;
 import io.quarkus.qute.Template;
 import io.quarkus.qute.TemplateInstance;
 
+import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -13,6 +15,9 @@ import javax.ws.rs.core.Response;
 // e defini o caminho base para essa classe.
 @Path("")
 public class LoginController {
+
+    @Inject
+    UsuarioBO usuarioBO;
 
     //Atributo que recupera o html na pasta resources
     private final Template login;
@@ -25,7 +30,7 @@ public class LoginController {
     @GET
     @Produces(MediaType.TEXT_HTML)
     @Path("")
-    public TemplateInstance login(){
+    public TemplateInstance loginHTML(){
         return login.instance();
     }
 
@@ -34,14 +39,6 @@ public class LoginController {
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/autenticar")
     public Response autenticar(AutenticacaoDTO autenticacaoDTO){
-        RetornoAutenticacaoDTO retorno = new RetornoAutenticacaoDTO();
-        if (autenticacaoDTO.getEmail().equals("daniel@ifg.edu.br") && autenticacaoDTO.getSenha().equals("123")) {
-            retorno.setMensagem("Usuário autenticado!");
-            return Response.ok(retorno, MediaType.APPLICATION_JSON).build();
-        }
-        else {
-            retorno.setMensagem("Usuário não autenticado!");
-            return Response.ok(retorno, MediaType.APPLICATION_JSON).build();
-        }
+        return Response.ok(usuarioBO.autenticar(autenticacaoDTO.getEmail(), autenticacaoDTO.getSenha()), MediaType.APPLICATION_JSON).build();
     }
 }
